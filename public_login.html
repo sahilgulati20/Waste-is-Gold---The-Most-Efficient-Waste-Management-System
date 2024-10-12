@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Portal Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .login-container {
+            max-width: 400px;
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #11de7e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #4c8808;
+        }
+        p {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Public Portal Login</h2>
+        <form id="publicLoginForm">
+            <div class="input-group">
+                <label for="pub-username">Username:</label>
+                <input type="text" id="pub-username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="pub-password">Password:</label>
+                <input type="password" id="pub-password" name="password" required>
+            </div>
+            <button type="button" id="loginButton">Login</button>
+        </form>
+
+        <p><a href="forget_password.html" style="color: rgb(5, 206, 5);">Forgot your password?</a></p>
+    </div>
+
+    <script>
+        // Validate form and redirect
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const username = document.getElementById('pub-username').value;
+            const password = document.getElementById('pub-password').value;
+
+            // Ensure both fields are filled
+            if (username === "" || password === "") {
+                alert("Please enter both username and password.");
+                return;
+            }
+
+            // Simulate successful login and redirect (for now without AEA Client)
+            alert('Login successful!');
+            window.location.href = 'public_page.html';
+        });
+    </script>
+</body>
+</html>

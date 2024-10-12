@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Login Portal with Fetch.ai</title>
+    <link rel="stylesheet" href="landing_styles.css">
+    <style>
+        /* Importing Google Fonts and Material Icons */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* General Body Styling */
+body {
+    background: linear-gradient(120deg, #f5f7fa, #e4edf7); /* Soft gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* Container */
+.landing-container {
+    background-color: #fff;
+    padding: 60px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 550px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 34px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.7;   
+}
+
+/* Portal Options */
+.portal-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Enhanced button styling with 3D effect and animations */
+.portal-button {
+    padding: 20px 35px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 170px;
+}
+
+/* Add subtle scaling, shadow, and border animation on hover */
+.portal-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.portal-button:hover::before {
+    width: 110%;
+    height: 110%;
+    opacity: 1;
+}
+
+/* Border animation effect */
+.portal-button::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%);
+}
+
+/* Larger Material Icons */
+.portal-button .material-icons {
+    font-size: 26px;
+    margin-right: 10px;
+}
+
+/* Government button with enhanced gradient and subtle border effect */
+.gov {
+    background: linear-gradient(145deg, #3b82f6, #2563eb);
+}
+
+.gov:hover {
+    background: linear-gradient(145deg, #2563eb, #1e40af);
+}
+
+/* Industry button with a bold gradient and hover effect */
+.industry {
+    background: linear-gradient(145deg, #f97316, #ea580c);
+}
+
+.industry:hover {
+    background: linear-gradient(145deg, #ea580c, #c2410c);
+}
+
+/* Public button with modern green gradient */
+.public {
+    background: linear-gradient(145deg, #10b981, #059669);
+}
+
+.public:hover {
+    background: linear-gradient(145deg, #059669, #047857);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .portal-options {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .portal-button {
+        max-width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <h1>Login Portal</h1>
+        <p>Please select the appropriate portal to continue:</p>
+        <div class="portal-options">
+            <a href="gov_login.html" class="portal-button gov" onclick="loginPortal('gov')">
+                <span class="material-icons">account_balance</span> Government
+            </a>
+            <a href="industry_login.html" class="portal-button industry" onclick="loginPortal('industry')">
+                <span class="material-icons">business</span> Industry
+            </a>
+            <a href="public_login.html" class="portal-button public" onclick="loginPortal('public')">
+                <span class="material-icons">people</span> Public
+            </a>
+        </div>
+        <p class="signup-text">Don't have an account? <a href="signup.html" class="signup-link">Sign up</a></p>
+    </div>
+
+    <script src="fetch_agent.js"></script>
+</body>
+</html>

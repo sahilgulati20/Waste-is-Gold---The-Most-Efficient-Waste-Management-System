@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Portal Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .login-container {
+            max-width: 400px;
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Government Portal Login</h2>
+        <form id="govLoginForm">
+            <div class="input-group">
+                <label for="gov-username">Username:</label>
+                <input type="text" id="gov-username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="gov-password">Password:</label>
+                <input type="password" id="gov-password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="forget_password.html">Forgot your password?</a></p>
+    </div>
+
+    <script type="module">
+        import { AEAClient } from 'fetchai/aealite';
+
+        const agentAddress = 'http://localhost:8000';  // Update with your AEA agent's address
+        let agentClient;
+
+        // Initialize the Fetch.ai AEA Client
+        async function initializeClient() {
+            try {
+                agentClient = new AEAClient(agentAddress);
+                console.log('Connected to AEA');
+            } catch (err) {
+                console.error('Error connecting to AEA:', err);
+            }
+        }
+
+        // Handle the login form submission
+        document.getElementById('govLoginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const loginData = {
+                username: document.getElementById('gov-username').value,
+                password: document.getElementById('gov-password').value
+            };
+
+            try {
+                const response = await agentClient.execute_skill('gov_login_skill', loginData);
+                if (response.status === 'success') {
+                    alert('Login successful!');
+                    // Redirect or perform further actions after successful login
+                } else {
+                    alert('Login failed: ' + response.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during login.');
+            }
+        });
+
+        window.onload = initializeClient;
+    </script>
+</body>
+</html>
